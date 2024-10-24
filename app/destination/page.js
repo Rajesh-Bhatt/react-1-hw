@@ -2,10 +2,14 @@
 
 import { useState } from "react";
 
+
 import styles from "@/components/destination/destination.module.css";
 import PlanetCard from "@/components/destination/PlanetCard";
 import PlanetWishlistItem from "@/components/ui/PlanetWishlistItem";
 import { AddWishlistItem } from "@/components/destination/AddWishlistItem";
+
+import PlanetCard from "@/components/destination/PlanetCard";
+
 
 export const Destinations = () => {
   const planetItems = [
@@ -55,6 +59,7 @@ export const Destinations = () => {
       `You selected the following planet: ${name}, with the index of ${index}`
     );
   };
+
   const onAddWishlistItem = (item) => {
     setSelectedPlanets((prevSelectedPlanets) => {
       // Prevent adding duplicates
@@ -65,6 +70,7 @@ export const Destinations = () => {
       return [...prevSelectedPlanets, item.name];
     });
   };
+
   const numberOfPlanets = selectedPlanets.length;
 
   return (
@@ -74,17 +80,40 @@ export const Destinations = () => {
         <section className="card">
           <h2>Wishlist</h2>
           {numberOfPlanets === 0 ? (
+
             <p>No planets in wishlist!</p>
           ) : (
             <p>
               You have {numberOfPlanets}{" "}
               {numberOfPlanets > 1 ? "planets" : "planet"} in your wishlist:
+
+            <p>No planets in wishlist </p>
+          ) : (
+            <p>
+              You have {numberOfPlanets}{" "}
+              {numberOfPlanets > 1 ? "planets" : "planet"} in your wishlist
+
             </p>
           )}
           {selectedPlanets.map((planet, index) => (
             <p key={index}>{planet}</p>
           ))}
+
           <AddWishlistItem onAddWishlistItem={onAddWishlistItem} />
+
+          <b>List coming soon after lesson 3!</b>
+
+          {/* STOP! - this is for week 3!*/}
+          {/* TASK - React 1 week 3 */}
+          {/* Import the AddWishlistItem react component */}
+          {/* <AddWishlistItem /> */}
+          {/* TASK - React 1 week 3 */}
+          {/* Convert the list, so it is using selectedPlanets.map() to display the items  */}
+          {/* Implement the "REMOVE" function */}
+          {/* uncomment the following code snippet: */}
+          {/*
+  
+
           <h3>Your current wishlist</h3>
           <div className={styles.wishlistList}>
             {selectedPlanets.length === 0 ? (
@@ -112,7 +141,11 @@ export const Destinations = () => {
               description={item.description}
               thumbnail={item.thumbnail}
               isSelected={selectedPlanets.includes(item.name)}
+
               onAddOrRemovePlanet={() => onAddOrRemovePlanet(item.name, index)}
+
+              onAddOrRemovePlanet={() => onAddOrRemovePlanet(item.name)}
+
             />
           ))}
         </section>
